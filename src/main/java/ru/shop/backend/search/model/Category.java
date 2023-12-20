@@ -11,5 +11,4 @@ public class Category {
     private String url;
     private String parentUrl;
     private String image;
-
 }

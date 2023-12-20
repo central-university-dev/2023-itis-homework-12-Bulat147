@@ -2,7 +2,7 @@ package ru.shop.backend.search.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import ru.shop.backend.search.model.ItemEntity;
+import ru.shop.backend.search.model.entities.ItemEntity;
 
 import java.util.List;
 import java.util.stream.Stream;
@@ -14,15 +14,15 @@ public interface ItemDbRepository  extends JpaRepository<ItemEntity, Long> {
             "where i.item_id in  :ids", nativeQuery = true)
     List<Object[]> findByIds(Integer regionId, List<Long> ids);
 
-    @Query(value = "" +
+    @Query(value =
             "select item_id from item_sku where sku = ?", nativeQuery = true)
     List<Integer> findBySku(String parseInt);
 
-    @Query(value = "" +
+    @Query(value =
             "select i.* from item as i", nativeQuery = true)
     Stream<ItemEntity> findAllInStream();
 
-    @Query(value = "" +
+    @Query(value =
             "select distinct c.name, cp.name as parent_name, c.realcatname as url , cp.realcatname as parent_url,\n" +
             "c.image                                                                                             \n" +
             "from item as i                                                                          \n" +

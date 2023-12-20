@@ -4,13 +4,11 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.elasticsearch.annotations.Query;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
-import ru.shop.backend.search.model.ItemElastic;
+import ru.shop.backend.search.model.documents.ItemElastic;
 
 import java.util.List;
 
-public interface ItemRepository extends ElasticsearchRepository<ItemElastic, Integer> {
-
-
+public interface ItemElasticRepository extends ElasticsearchRepository<ItemElastic, Integer> {
     @Query("{\n" +
             "    \"multi_match\": {\n" +
             "      \"fields\":  [ \"type^2\", \"name^2\", \"description\"],\n" +

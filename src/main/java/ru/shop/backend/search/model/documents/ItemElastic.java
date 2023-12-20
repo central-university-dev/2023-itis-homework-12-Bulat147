@@ -1,4 +1,4 @@
-package ru.shop.backend.search.model;
+package ru.shop.backend.search.model.documents;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -11,16 +11,18 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
+import ru.shop.backend.search.model.entities.ItemEntity;
 
 import java.util.Arrays;
 import java.util.Locale;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Document(indexName = "item", createIndex = true)
+@Document(indexName = "item")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ItemElastic {
@@ -70,6 +72,6 @@ public class ItemElastic {
                         return null;
                     return d.replace(":","");
                 }
-        ).filter( d -> d != null).collect(Collectors.joining());
+        ).filter(Objects::nonNull).collect(Collectors.joining());
     }
 }
