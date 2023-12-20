@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - changeSet:
+      id: 'create-tables'
+      author: Khalilov Bulat
+      changes:
+        - sqlFile:
+            dbms: postgresql
+            splitStatements: true
+            path: SQL/20231219-create-tables.sql
+            relativeToChangelogFile: true

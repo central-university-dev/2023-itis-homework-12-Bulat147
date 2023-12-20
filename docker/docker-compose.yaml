@@ -1,0 +1,22 @@
+version: "3.3"
+
+services:
+  es01:
+    image: "elasticsearch:7.17.15"
+    ports:
+      - "${EL_PORT:-9200}:9200"
+
+  sitedb:
+    container_name: site-db
+    image: postgres:12-alpine
+    restart: on-failure
+    ports:
+      - "${DB_PORT:-5434}:5432"
+    environment:
+      POSTGRES_USER: ${DB_USERNAME:-postgres}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-root}
+      POSTGRES_DB: ${DB_NAME:-site}
+    volumes:
+#      - ./docker-entrypoint-initdb.d/ddl.sql:/docker-entrypoint-initdb.d/ddl.sql
+      - ./pgdata:/var/lib/postgresql/data
+

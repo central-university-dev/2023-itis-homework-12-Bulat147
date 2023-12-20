@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import ru.shop.backend.search.model.documents.ItemElastic;
 
 import java.util.List;
 
@@ -16,5 +17,4 @@ public class CatalogueElastic {
     private Long catalogueId;
     private List<ItemElastic> items;
     private String brand;
-
 }

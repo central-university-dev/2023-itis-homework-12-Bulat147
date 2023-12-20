@@ -1,4 +1,4 @@
-package ru.shop.backend.search.model;
+package ru.shop.backend.search.model.entities;
 
 import lombok.*;
 
